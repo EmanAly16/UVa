@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int n;
+    while (cin >> n && n)
+    {
+        multiset<int> num;
+        long long cost = 0;
+
+        while (n--)
+        {
+            int k;
+            cin >> k;
+
+            while (k--)
+            {
+                int t;
+                cin >> t;
+
+                num.insert(t);
+            }
+
+            multiset<int>::iterator lowest = num.begin();
+            multiset<int>::iterator highest = num.end();
+            highest--;
+            cost += *highest - *lowest;
+
+            num.erase(lowest);
+            num.erase(highest);
+        }
+
+        cout << cost << endl;
+    }
+    return 0;
+}
